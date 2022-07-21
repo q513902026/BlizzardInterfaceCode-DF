@@ -1,0 +1,162 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="MultiActionBars.lua"/>
+
+	<CheckButton name="MultiBar1ButtonTemplate" virtual="true" inherits="ActionBarButtonTemplate">
+		<KeyValues>
+			<KeyValue key="buttonType" value="MULTIACTIONBAR1BUTTON" type="string"/>
+		</KeyValues>
+	</CheckButton>
+
+	<CheckButton name="MultiBar2ButtonTemplate" virtual="true" inherits="ActionBarButtonTemplate">
+		<KeyValues>
+			<KeyValue key="buttonType" value="MULTIACTIONBAR2BUTTON" type="string"/>
+		</KeyValues>
+	</CheckButton>
+
+	<CheckButton name="MultiBar3ButtonTemplate" virtual="true" inherits="ActionBarButtonTemplate">
+		<KeyValues>
+			<KeyValue key="buttonType" value="MULTIACTIONBAR3BUTTON" type="string"/>
+		</KeyValues>
+		<Scripts>
+			<OnLoad inherit="append">
+				self:SetAttribute("flyoutDirection", "LEFT");
+			</OnLoad>
+		</Scripts>
+	</CheckButton>
+
+	<CheckButton name="MultiBar4ButtonTemplate" virtual="true" inherits="ActionBarButtonTemplate">
+		<KeyValues>
+			<KeyValue key="buttonType" value="MULTIACTIONBAR4BUTTON" type="string"/>
+		</KeyValues>
+		<Scripts>
+			<OnLoad inherit="append">
+				self:SetAttribute("flyoutDirection", "LEFT");
+			</OnLoad>
+		</Scripts>
+	</CheckButton>
+
+	<Frame name="MultiBarBottomLeft" inherits="EditModeActionBarTemplate" parent="UIParent" frameStrata="MEDIUM" hidden="true">
+		<Size x="454" y="35"/>
+		<KeyValues>
+			<KeyValue key="buttonTemplate" value="MultiBar1ButtonTemplate" type="string"/>
+			<KeyValue key="commandNamePrefix" value="MULTIACTIONBAR1" type="string"/>
+			<KeyValue key="isHorizontal" value="true" type="boolean"/>
+			<KeyValue key="numRows" value="1" type="number"/>
+			<KeyValue key="addButtonsToRight" value="true" type="boolean"/>
+			<KeyValue key="addButtonsToTop" value="true" type="boolean"/>
+			<KeyValue key="systemIndex" value="2" type="number"/>
+		</KeyValues>
+		<Attributes>
+			<Attribute name="actionpage" type="number" value="6"/>
+		</Attributes>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture parentKey="QuickKeybindGlow" atlas="QuickKeybind_TopLeftBar_Glow" useAtlasSize="true" hidden="true">
+					<Anchors>
+						<Anchor point="CENTER" relativePoint="CENTER" x="-1"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="MultiBarBottomRight" inherits="EditModeActionBarTemplate" parent="UIParent" frameStrata="MEDIUM" hidden="true">
+		<Size x="454" y="35"/>
+		<KeyValues>
+			<KeyValue key="buttonTemplate" value="MultiBar2ButtonTemplate" type="string"/>
+			<KeyValue key="commandNamePrefix" value="MULTIACTIONBAR2" type="string"/>
+			<KeyValue key="isHorizontal" value="true" type="boolean"/>
+			<KeyValue key="numRows" value="1" type="number"/>
+			<KeyValue key="addButtonsToRight" value="true" type="boolean"/>
+			<KeyValue key="addButtonsToTop" value="true" type="boolean"/>
+			<KeyValue key="systemIndex" value="3" type="number"/>
+		</KeyValues>
+		<Attributes>
+			<Attribute name="actionpage" type="number" value="5"/>
+		</Attributes>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture parentKey="QuickKeybindGlow" atlas="QuickKeybind_TopRightBar_Glow" useAtlasSize="true" hidden="true">
+					<Anchors>
+						<Anchor point="CENTER" relativePoint="CENTER" x="-2" y="25"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="MultiBarLeft" inherits="EditModeActionBarTemplate" parent="UIParent" frameStrata="MEDIUM" hidden="true">
+		<Size x="35" y="454"/>
+		<KeyValues>
+			<KeyValue key="buttonTemplate" value="MultiBar4ButtonTemplate" type="string"/>
+			<KeyValue key="commandNamePrefix" value="MULTIACTIONBAR4" type="string"/>
+			<KeyValue key="isHorizontal" value="false" type="boolean"/>
+			<KeyValue key="numRows" value="1" type="number"/>
+			<KeyValue key="addButtonsToRight" value="true" type="boolean"/>
+			<KeyValue key="addButtonsToTop" value="false" type="boolean"/>
+			<KeyValue key="systemIndex" value="4" type="number"/>
+		</KeyValues>
+		<Animations>
+			<AnimationGroup parentKey="slideOut">
+				<Translation offsetX="200" offsetY="0" duration="0.7" order="1"/>
+				<Scripts>
+					<OnFinished>
+						if not MainMenuBar:IsShown() then
+						MultiBarLeft:Hide();
+						end
+					</OnFinished>
+				</Scripts>
+			</AnimationGroup>
+		</Animations>
+		<Attributes>
+			<Attribute name="actionpage" type="number" value="4"/>
+		</Attributes>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture parentKey="QuickKeybindGlow" atlas="QuickKeybind_SideBar_Glow" useAtlasSize="true" hidden="true">
+					<Anchors>
+						<Anchor point="CENTER" relativePoint="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="MultiBarRight" inherits="EditModeActionBarTemplate" parent="UIParent" frameStrata="MEDIUM" hidden="true">
+		<Size x="35" y="454"/>
+		<KeyValues>
+			<KeyValue key="buttonTemplate" value="MultiBar3ButtonTemplate" type="string"/>
+			<KeyValue key="commandNamePrefix" value="MULTIACTIONBAR3" type="string"/>
+			<KeyValue key="isHorizontal" value="false" type="boolean"/>
+			<KeyValue key="numRows" value="1" type="number"/>
+			<KeyValue key="addButtonsToRight" value="true" type="boolean"/>
+			<KeyValue key="addButtonsToTop" value="false" type="boolean"/>
+			<KeyValue key="systemIndex" value="5" type="number"/>
+		</KeyValues>
+		<Animations>
+			<AnimationGroup parentKey="slideOut">
+				<Translation offsetX="200" offsetY="0" duration="0.7" order="1"/>
+				<Scripts>
+					<OnFinished>
+						if not MainMenuBar:IsShown() then
+							MultiBarRight:Hide();
+						end
+					</OnFinished>
+				</Scripts>
+			</AnimationGroup>
+		</Animations>
+		<Attributes>
+			<Attribute name="actionpage" type="number" value="3"/>
+		</Attributes>
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="-7">
+				<Texture parentKey="QuickKeybindGlow" atlas="QuickKeybind_SideBar_Glow" useAtlasSize="true" hidden="true">
+					<Anchors>
+						<Anchor point="CENTER" relativePoint="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+</Ui>
